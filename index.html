@@ -1,16 +1,19 @@
-		<!DOCTYPE HTML>
+<!DOCTYPE HTML>
 <!--
 	Read Only by HTML5 UP
 	html5up.net | @ajlkn
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
-<html>
+<html lang="en">
 	<head>
 		<title>Princess Angel C. Sepe | Portfolio</title>
 		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="description" content="Personal portfolio of Princess Angel C. Sepe, Grade 11 TVL-ICT student passionate about computers, programming, and web development." />
+		<!-- Preload LCP Banner Image for fast Mobile LCP -->
+		<link rel="preload" as="image" href="banner.jpg" fetchpriority="high" />
 		<link rel="stylesheet" href="assets/css/main.css" />
-		<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+		<script defer src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 		<style>
 			/* Full Burgundy & Navy Blue override (replaces all #4acaa8 green rules in main.css) */
 			:root {
@@ -36,7 +39,7 @@
 			}
 
 			#header > header p {
-				color: rgba(255, 255, 255, 0.85) !important;
+				color: rgba(255, 255, 255, 0.9) !important;
 			}
 
 			#header .image.avatar {
@@ -73,7 +76,7 @@
 
 			/* Sidebar Footer Icons */
 			#header > footer .icons li a {
-				color: rgba(255, 255, 255, 0.75) !important;
+				color: rgba(255, 255, 255, 0.85) !important;
 				transition: color 0.25s ease, transform 0.25s ease !important;
 			}
 
@@ -328,7 +331,7 @@
 		<!-- Header -->
 			<section id="header">
 				<header>
-					<span class="image avatar"><img src="profile.jpg" alt="Princess Angel C. Sepe" /></span>
+					<span class="image avatar"><img src="profile.jpg" alt="Princess Angel C. Sepe" width="200" height="200" decoding="async" /></span>
 					<h1 id="logo"><a href="#one">Princess Angel C. Sepe</a></h1>
 					<p>Grade 11 TVL-ICT Student<br />
 					Computers, Programming &amp; Web Dev</p>
@@ -343,8 +346,8 @@
 				</nav>
 				<footer>
 					<ul class="icons">
-						<li><a href="https://www.facebook.com/gelahazeeey" target="_blank" rel="noopener noreferrer" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
-						<li><a href="#four" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
+						<li><a href="https://www.facebook.com/gelahazeeey" target="_blank" rel="noopener noreferrer" aria-label="Facebook" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+						<li><a href="#four" aria-label="Email" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
 					</ul>
 				</footer>
 			</section>
@@ -358,7 +361,7 @@
 						<!-- One: Banner, Brief Introduction & Location -->
 							<section id="one">
 								<div class="image main" data-position="center">
-									<img src="banner.jpg" alt="Banner" />
+									<img src="banner.jpg" alt="Cityscape Banner" width="1200" height="400" fetchpriority="high" decoding="sync" />
 								</div>
 								<div class="container">
 									<header class="major">
@@ -372,7 +375,6 @@
 									<h3>My Location</h3>
 									<p>The map below shows my selected location (H Mall, Pajac - Maribago Road, Lapu-Lapu).</p>
 									<div class="map-wrapper">
-										<!-- Paste your exact Google Maps iframe src below -->
 										<iframe
 											src="https://www.google.com/maps?q=H+Mall,+Pajac+-+Maribago+Road,+Lapu-Lapu&output=embed"
 											allowfullscreen=""
@@ -558,65 +560,69 @@
 
 			</div>
 
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.scrollex.min.js"></script>
-			<script src="assets/js/jquery.scrolly.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
+		<!-- Scripts (Deferred so they don't block initial rendering) -->
+			<script defer src="assets/js/jquery.min.js"></script>
+			<script defer src="assets/js/jquery.scrollex.min.js"></script>
+			<script defer src="assets/js/jquery.scrolly.min.js"></script>
+			<script defer src="assets/js/browser.min.js"></script>
+			<script defer src="assets/js/breakpoints.min.js"></script>
+			<script defer src="assets/js/util.js"></script>
+			<script defer src="assets/js/main.js"></script>
 
 			<script>
-				emailjs.init({
-					publicKey: "iP4AtOiV2tNr7G7AL"
-				});
-
-				const contactForm = document.getElementById("contact-form");
-				const statusMessage = document.getElementById("status-message");
-				const timeInput = document.getElementById("time");
-				const submitBtn = document.getElementById("submit-btn");
-				const resetBtn = document.getElementById("reset-btn");
-
-				function setStatus(text, type) {
-					statusMessage.textContent = text;
-					statusMessage.classList.remove("is-error", "is-success");
-					if (type) {
-						statusMessage.classList.add(type);
+				document.addEventListener("DOMContentLoaded", function () {
+					if (window.emailjs) {
+						emailjs.init({
+							publicKey: "iP4AtOiV2tNr7G7AL"
+						});
 					}
-				}
 
-				resetBtn.addEventListener("click", function () {
-					setStatus("", "");
-				});
+					const contactForm = document.getElementById("contact-form");
+					const statusMessage = document.getElementById("status-message");
+					const timeInput = document.getElementById("time");
+					const submitBtn = document.getElementById("submit-btn");
+					const resetBtn = document.getElementById("reset-btn");
 
-				contactForm.addEventListener("submit", function (event) {
-					event.preventDefault();
+					function setStatus(text, type) {
+						statusMessage.textContent = text;
+						statusMessage.classList.remove("is-error", "is-success");
+						if (type) {
+							statusMessage.classList.add(type);
+						}
+					}
 
-					timeInput.value = new Date().toLocaleString();
-					submitBtn.disabled = true;
-					submitBtn.value = "Sending...";
-					setStatus("Sending message...", "");
+					resetBtn.addEventListener("click", function () {
+						setStatus("", "");
+					});
 
-					emailjs.sendForm(
-						"service_mypg2rg",
-						"template_watftzj",
-						contactForm
-					)
-					.then(function () {
-						setStatus("Successfully Sent!", "is-success");
-						contactForm.reset();
-					})
-					.catch(function (error) {
-						console.error("EmailJS error:", error);
-						const detail = error && (error.text || error.message)
-							? " (" + (error.text || error.message) + ")"
-							: "";
-						setStatus("Failed to send" + detail + ". Check your connection, EmailJS domain settings, or template IDs.", "is-error");
-					})
-					.finally(function () {
-						submitBtn.disabled = false;
-						submitBtn.value = "Send Message";
+					contactForm.addEventListener("submit", function (event) {
+						event.preventDefault();
+
+						timeInput.value = new Date().toLocaleString();
+						submitBtn.disabled = true;
+						submitBtn.value = "Sending...";
+						setStatus("Sending message...", "");
+
+						emailjs.sendForm(
+							"service_mypg2rg",
+							"template_watftzj",
+							contactForm
+						)
+						.then(function () {
+							setStatus("Successfully Sent!", "is-success");
+							contactForm.reset();
+						})
+						.catch(function (error) {
+							console.error("EmailJS error:", error);
+							const detail = error && (error.text || error.message)
+								? " (" + (error.text || error.message) + ")"
+								: "";
+							setStatus("Failed to send" + detail + ". Check your connection, EmailJS domain settings, or template IDs.", "is-error");
+						})
+						.finally(function () {
+							submitBtn.disabled = false;
+							submitBtn.value = "Send Message";
+						});
 					});
 				});
 			</script>
