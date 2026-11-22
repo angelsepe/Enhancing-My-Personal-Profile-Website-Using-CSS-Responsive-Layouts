@@ -1,0 +1,625 @@
+		<!DOCTYPE HTML>
+<!--
+	Read Only by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+	<head>
+		<title>Princess Angel C. Sepe | Portfolio</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+		<style>
+			/* Full Burgundy & Navy Blue override (replaces all #4acaa8 green rules in main.css) */
+			:root {
+				--burgundy-main: #6d1424;
+				--burgundy-dark: #4c0b17;
+				--burgundy-light: #962036;
+				--navy-main: #162642;
+				--navy-dark: #0d172a;
+				--navy-light: #27406b;
+				--navy-soft: rgba(22, 38, 66, 0.14);
+				--burgundy-soft: rgba(109, 20, 36, 0.12);
+			}
+
+			/* Sidebar & Mobile Title Bar */
+			#header,
+			#titleBar {
+				background: linear-gradient(180deg, var(--burgundy-main) 0%, var(--navy-main) 100%) !important;
+				background-color: var(--burgundy-main) !important;
+			}
+
+			#titleBar .toggle:before {
+				background: var(--navy-main) !important;
+			}
+
+			#header > header p {
+				color: rgba(255, 255, 255, 0.85) !important;
+			}
+
+			#header .image.avatar {
+				border: 3px solid rgba(255, 255, 255, 0.85);
+				transition: transform 0.3s ease, border-color 0.3s ease;
+			}
+
+			#header .image.avatar:hover {
+				transform: scale(1.04);
+				border-color: #ffffff;
+			}
+
+			/* Sidebar Nav Links & Hover */
+			#header > nav ul li {
+				border-top-color: rgba(255, 255, 255, 0.15) !important;
+			}
+
+			#header > nav ul li a {
+				color: #ffffff !important;
+				transition: background 0.25s ease, color 0.25s ease, padding-left 0.25s ease !important;
+			}
+
+			#header > nav ul li a:hover {
+				background: var(--navy-dark) !important;
+				color: #ffffff !important;
+				padding-left: 1.5em !important;
+			}
+
+			#header > nav ul li a.active {
+				background: #ffffff !important;
+				color: var(--navy-main) !important;
+				font-weight: 700;
+			}
+
+			/* Sidebar Footer Icons */
+			#header > footer .icons li a {
+				color: rgba(255, 255, 255, 0.75) !important;
+				transition: color 0.25s ease, transform 0.25s ease !important;
+			}
+
+			#header > footer .icons li a:hover {
+				color: #ffffff !important;
+				transform: translateY(-2px);
+			}
+
+			/* Main Content Headings & Links */
+			#main header.major h2,
+			h2, h3 {
+				color: var(--burgundy-main) !important;
+			}
+
+			h4, h5, h6 {
+				color: var(--navy-main) !important;
+			}
+
+			a {
+				color: var(--navy-main);
+				border-bottom-color: rgba(22, 38, 66, 0.3);
+				transition: color 0.2s ease, border-color 0.2s ease;
+			}
+
+			a:hover {
+				color: var(--burgundy-main) !important;
+				border-bottom-color: var(--burgundy-main) !important;
+			}
+
+			/* Hobby Feature Icon Circles */
+			ul.feature-icons li:before {
+				background: var(--burgundy-main) !important;
+				color: #ffffff !important;
+				transition: background 0.25s ease, transform 0.25s ease !important;
+			}
+
+			ul.feature-icons li:nth-child(even):before {
+				background: var(--navy-main) !important;
+			}
+
+			ul.feature-icons li:hover:before {
+				background: var(--burgundy-light) !important;
+				transform: scale(1.12);
+			}
+
+			/* Contact Section (#four) Card & Hover Effects */
+			#four form {
+				background: #fafbfc;
+				border: 2px solid rgba(22, 38, 66, 0.15);
+				border-radius: 10px;
+				padding: 1.75em;
+				transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease, background-color 0.3s ease;
+			}
+
+			#four form:hover {
+				background: #ffffff;
+				border-color: var(--burgundy-main);
+				box-shadow: 0 12px 28px rgba(22, 38, 66, 0.14);
+				transform: translateY(-3px);
+			}
+
+			#four .form-group-label {
+				display: block;
+				font-weight: 700;
+				margin-bottom: 0.5em;
+				color: var(--navy-main);
+				transition: color 0.25s ease, transform 0.25s ease;
+			}
+
+			#four .row > div:hover > .form-group-label {
+				color: var(--burgundy-main);
+				transform: translateX(3px);
+			}
+
+			/* Inputs, Selects & Textarea Hover + Focus */
+			#four input[type="text"],
+			#four input[type="email"],
+			#four select,
+			#four textarea {
+				transition: border-color 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease, transform 0.2s ease !important;
+			}
+
+			#four input[type="text"]:hover,
+			#four input[type="email"]:hover,
+			#four select:hover,
+			#four textarea:hover {
+				border-color: var(--burgundy-main) !important;
+				background-color: #ffffff !important;
+				box-shadow: 0 4px 12px var(--burgundy-soft) !important;
+				transform: translateY(-1px);
+			}
+
+			#four input[type="text"]:focus,
+			#four input[type="email"]:focus,
+			#four select:focus,
+			#four textarea:focus {
+				border-color: var(--navy-main) !important;
+				box-shadow: 0 0 0 3px var(--navy-soft) !important;
+				transform: translateY(-1px);
+			}
+
+			/* Radio & Checkbox Pill Hover Effects */
+			.inline-options {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 0.5em 0.9em;
+				align-items: center;
+			}
+
+			#four .inline-options > div {
+				padding: 0.3em 0.7em;
+				border-radius: 6px;
+				border: 1px solid transparent;
+				transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+			}
+
+			#four .inline-options > div:hover {
+				background-color: var(--burgundy-soft);
+				border-color: rgba(109, 20, 36, 0.3);
+				transform: translateY(-2px);
+			}
+
+			#four .inline-options label {
+				cursor: pointer;
+				transition: color 0.2s ease;
+			}
+
+			#four .inline-options > div:hover label {
+				color: var(--burgundy-main) !important;
+			}
+
+			#four .inline-options > div:hover label:before {
+				border-color: var(--burgundy-main) !important;
+			}
+
+			input[type="checkbox"]:checked + label:before,
+			input[type="radio"]:checked + label:before {
+				background: var(--burgundy-main) !important;
+				border-color: var(--burgundy-main) !important;
+			}
+
+			/* Contact Buttons — Explicit Sizing & Hover */
+			#four ul.actions {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 0.75em;
+				align-items: center;
+				margin: 0;
+				padding: 0;
+				list-style: none;
+			}
+
+			#four ul.actions li {
+				padding: 0 !important;
+			}
+
+			#four input[type="submit"],
+			#four input[type="reset"] {
+				height: 2.85em !important;
+				line-height: 2.85em !important;
+				padding: 0 1.65em !important;
+				font-size: 0.9em !important;
+				font-weight: 700 !important;
+				letter-spacing: 0.04em !important;
+				border-radius: 5px !important;
+				cursor: pointer !important;
+				opacity: 1 !important;
+			}
+
+			#four input[type="submit"].primary {
+				background: var(--burgundy-main) !important;
+				background-color: var(--burgundy-main) !important;
+				color: #ffffff !important;
+				border: 0 !important;
+				box-shadow: none !important;
+				transition: background 0.25s ease, transform 0.2s ease, box-shadow 0.25s ease !important;
+			}
+
+			#four input[type="submit"].primary:hover:not(:disabled) {
+				background: var(--navy-main) !important;
+				background-color: var(--navy-main) !important;
+				color: #ffffff !important;
+				transform: translateY(-2px);
+				box-shadow: 0 6px 14px rgba(22, 38, 66, 0.28) !important;
+			}
+
+			#four input[type="submit"].primary:disabled {
+				opacity: 0.75 !important;
+				cursor: wait !important;
+			}
+
+			#four input[type="reset"] {
+				background: #ffffff !important;
+				background-color: #ffffff !important;
+				color: var(--navy-main) !important;
+				box-shadow: inset 0 0 0 2px rgba(22, 38, 66, 0.35) !important;
+				transition: all 0.25s ease !important;
+			}
+
+			#four input[type="reset"]:hover {
+				background: var(--navy-soft) !important;
+				box-shadow: inset 0 0 0 2px var(--navy-main) !important;
+				color: var(--navy-main) !important;
+				transform: translateY(-2px);
+			}
+
+			#status-message {
+				font-weight: 700;
+				color: var(--navy-main);
+				margin: 0;
+			}
+
+			#status-message.is-error {
+				color: var(--burgundy-main);
+			}
+
+			#status-message.is-success {
+				color: #165b33;
+			}
+
+			/* Map Embed Helper */
+			.map-wrapper {
+				position: relative;
+				width: 100%;
+				padding-bottom: 56.25%;
+				height: 0;
+				overflow: hidden;
+				border-radius: 6px;
+				margin-top: 1.25em;
+				border: 2px solid var(--navy-main);
+				transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+			}
+
+			.map-wrapper:hover {
+				transform: translateY(-3px);
+				border-color: var(--burgundy-main);
+				box-shadow: 0 10px 22px rgba(22, 38, 66, 0.18);
+			}
+
+			.map-wrapper iframe {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				border: 0;
+			}
+		</style>
+	</head>
+	<body class="is-preload">
+
+		<!-- Header -->
+			<section id="header">
+				<header>
+					<span class="image avatar"><img src="profile.jpg" alt="Princess Angel C. Sepe" /></span>
+					<h1 id="logo"><a href="#one">Princess Angel C. Sepe</a></h1>
+					<p>Grade 11 TVL-ICT Student<br />
+					Computers, Programming &amp; Web Dev</p>
+				</header>
+				<nav id="nav">
+					<ul>
+						<li><a href="#one" class="active">Home &amp; Location</a></li>
+						<li><a href="#two">About &amp; Hobbies</a></li>
+						<li><a href="#three">Favorites &amp; Goals</a></li>
+						<li><a href="#four">Contact Me</a></li>
+					</ul>
+				</nav>
+				<footer>
+					<ul class="icons">
+						<li><a href="https://www.facebook.com/gelahazeeey" target="_blank" rel="noopener noreferrer" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+						<li><a href="#four" class="icon solid fa-envelope"><span class="label">Email</span></a></li>
+					</ul>
+				</footer>
+			</section>
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+					<div id="main">
+
+						<!-- One: Banner, Brief Introduction & Location -->
+							<section id="one">
+								<div class="image main" data-position="center">
+									<img src="banner.jpg" alt="Banner" />
+								</div>
+								<div class="container">
+									<header class="major">
+										<h2>Princess Angel C. Sepe</h2>
+										<p>Brief Introduction</p>
+									</header>
+									<p>Hello! My name is Princess Angel C. Sepe. I am a Grade 11 TVL-ICT student. I enjoy learning about computers, programming, and web development. This website contains information about me, my hobbies, my favorite things, and my goals in life.</p>
+
+									<hr />
+
+									<h3>My Location</h3>
+									<p>The map below shows my selected location (H Mall, Pajac - Maribago Road, Lapu-Lapu).</p>
+									<div class="map-wrapper">
+										<!-- Paste your exact Google Maps iframe src below -->
+										<iframe
+											src="https://www.google.com/maps?q=H+Mall,+Pajac+-+Maribago+Road,+Lapu-Lapu&output=embed"
+											allowfullscreen=""
+											loading="lazy"
+											referrerpolicy="no-referrer-when-downgrade"
+											title="My Location - H Mall">
+										</iframe>
+									</div>
+								</div>
+							</section>
+
+						<!-- Two: Personal Info, About Me & Hobbies -->
+							<section id="two">
+								<div class="container">
+									<h3>Personal Information</h3>
+									<p>
+										<strong>Full Name:</strong> Princess Angel C. Sepe<br />
+										<strong>Grade and Strand:</strong> Grade 11 - TVL ICT<br />
+										<strong>Birthday:</strong> October 5, 2010<br />
+										<strong>Interest:</strong> Programming/Coding
+									</p>
+
+									<hr />
+
+									<h3>About Me</h3>
+									<p>Hello! I am Princess Angel C. Sepe. I am an <em>optimistic</em> and <em>hardworking</em> student who enjoys learning new things every day. I dream of becoming a successful Web Developer or IT Professional in the future.</p>
+
+									<hr />
+
+									<h3>My Hobbies and Interests</h3>
+									<p>Here are the things I enjoy doing in my free time:</p>
+									<ul class="feature-icons">
+										<li class="icon solid fa-table-tennis">Playing Badminton</li>
+										<li class="icon solid fa-music">Dancing</li>
+										<li class="icon solid fa-headphones">Listening to Music</li>
+										<li class="icon solid fa-film">Watching Movies</li>
+										<li class="icon solid fa-gamepad">Playing Video Games</li>
+										<li class="icon solid fa-bed">Sleeping</li>
+									</ul>
+								</div>
+							</section>
+
+						<!-- Three: Favorites & Goals -->
+							<section id="three">
+								<div class="container">
+									<h3>My Favorite Things</h3>
+
+									<h4>My Top 5 Favorite Foods</h4>
+									<ol>
+										<li>Shawarma</li>
+										<li>Pizza</li>
+										<li>Burger</li>
+										<li>Spaghetti</li>
+										<li>Ice Cream</li>
+									</ol>
+
+									<h4>Favorite Details</h4>
+									<ul>
+										<li><strong>Color:</strong> Black, White, Gray, Red — I like simple and aesthetic colors.</li>
+										<li><strong>Food:</strong> Shawarma — It is my favorite food.</li>
+										<li><strong>Drink:</strong> Sprite — I like its refreshing taste.</li>
+										<li><strong>Subject:</strong> Computer Programming — I enjoy creating websites and learning coding.</li>
+										<li><strong>Hobby:</strong> Dancing — It helps me express myself.</li>
+									</ul>
+
+									<hr />
+
+									<h3>My Goals</h3>
+									<p>My educational goals are to finish Senior High School with good grades, continue learning programming, and become a successful Web Developer or IT Professional in the future.</p>
+
+									<h4>Educational Goals</h4>
+									<ol>
+										<li>Finish Senior High School with good grades.</li>
+										<li>Improve my HTML, CSS, and JavaScript skills.</li>
+										<li>Learn different programming languages.</li>
+										<li>Graduate from college.</li>
+										<li>Become a successful Web Developer or IT Professional.</li>
+									</ol>
+								</div>
+							</section>
+
+						<!-- Four: Contact Me -->
+							<section id="four">
+								<div class="container">
+									<h3>Contact Me</h3>
+									<p>Feel free to fill out the form below. You can send me a message about school projects, feedback, or collaboration.</p>
+
+									<form id="contact-form" method="post" action="#">
+										<div class="row gtr-uniform">
+											<div class="col-6 col-12-xsmall">
+												<label for="name" class="form-group-label">Full Name</label>
+												<input type="text" name="name" id="name" placeholder="Full Name" required />
+											</div>
+											<div class="col-6 col-12-xsmall">
+												<label for="email" class="form-group-label">Email Address</label>
+												<input type="email" name="email" id="email" placeholder="Email Address" required />
+											</div>
+
+											<div class="col-6 col-12-medium">
+												<span class="form-group-label">Gender</span>
+												<div class="inline-options">
+													<div>
+														<input type="radio" id="gender-male" name="gender" value="Male">
+														<label for="gender-male">Male</label>
+													</div>
+													<div>
+														<input type="radio" id="gender-female" name="gender" value="Female">
+														<label for="gender-female">Female</label>
+													</div>
+												</div>
+											</div>
+
+											<div class="col-6 col-12-medium">
+												<label for="strand" class="form-group-label">Strand</label>
+												<select name="strand" id="strand">
+													<option value="ICT" selected>ICT</option>
+													<option value="STEM">STEM</option>
+													<option value="ABM">ABM</option>
+													<option value="HUMSS">HUMSS</option>
+													<option value="GAS">GAS</option>
+												</select>
+											</div>
+
+											<div class="col-12">
+												<span class="form-group-label">Interests</span>
+												<div class="inline-options">
+													<div><input type="checkbox" id="int-tech" name="interest" value="Technology"><label for="int-tech">Technology</label></div>
+													<div><input type="checkbox" id="int-gaming" name="interest" value="Gaming"><label for="int-gaming">Gaming</label></div>
+													<div><input type="checkbox" id="int-music" name="interest" value="Music"><label for="int-music">Music</label></div>
+													<div><input type="checkbox" id="int-coding" name="interest" value="Coding"><label for="int-coding">Coding</label></div>
+													<div><input type="checkbox" id="int-movies" name="interest" value="Movies"><label for="int-movies">Movies</label></div>
+													<div><input type="checkbox" id="int-sports" name="interest" value="Sports"><label for="int-sports">Sports</label></div>
+													<div><input type="checkbox" id="int-drawing" name="interest" value="Drawing"><label for="int-drawing">Drawing</label></div>
+													<div><input type="checkbox" id="int-traveling" name="interest" value="Traveling"><label for="int-traveling">Traveling</label></div>
+												</div>
+											</div>
+
+											<div class="col-12">
+												<label for="purpose" class="form-group-label">Purpose of Visit</label>
+												<select name="purpose" id="purpose">
+													<option value="General Inquiry" selected>General Inquiry</option>
+													<option value="Feedback">Feedback</option>
+													<option value="Collaboration">Collaboration</option>
+													<option value="School Project">School Project</option>
+													<option value="Others">Others</option>
+												</select>
+											</div>
+
+											<div class="col-12">
+												<label for="message" class="form-group-label">Message</label>
+												<textarea name="message" id="message" placeholder="Message" rows="6" required></textarea>
+											</div>
+
+											<div class="col-12">
+												<p id="status-message" role="status" aria-live="polite"></p>
+											</div>
+
+											<input type="hidden" name="title" value="Contact Me Form">
+											<input type="hidden" id="time" name="time">
+
+											<div class="col-12">
+												<ul class="actions">
+													<li><input type="submit" id="submit-btn" class="primary" value="Send Message" /></li>
+													<li><input type="reset" id="reset-btn" value="Clear Form" /></li>
+												</ul>
+											</div>
+										</div>
+									</form>
+								</div>
+							</section>
+
+					</div>
+
+				<!-- Footer -->
+					<section id="footer">
+						<div class="container">
+							<ul class="copyright">
+								<li>&copy; Princess Angel C. Sepe. All rights reserved.</li>
+								<li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+							</ul>
+						</div>
+					</section>
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+			<script>
+				emailjs.init({
+					publicKey: "iP4AtOiV2tNr7G7AL"
+				});
+
+				const contactForm = document.getElementById("contact-form");
+				const statusMessage = document.getElementById("status-message");
+				const timeInput = document.getElementById("time");
+				const submitBtn = document.getElementById("submit-btn");
+				const resetBtn = document.getElementById("reset-btn");
+
+				function setStatus(text, type) {
+					statusMessage.textContent = text;
+					statusMessage.classList.remove("is-error", "is-success");
+					if (type) {
+						statusMessage.classList.add(type);
+					}
+				}
+
+				resetBtn.addEventListener("click", function () {
+					setStatus("", "");
+				});
+
+				contactForm.addEventListener("submit", function (event) {
+					event.preventDefault();
+
+					timeInput.value = new Date().toLocaleString();
+					submitBtn.disabled = true;
+					submitBtn.value = "Sending...";
+					setStatus("Sending message...", "");
+
+					emailjs.sendForm(
+						"service_mypg2rg",
+						"template_watftzj",
+						contactForm
+					)
+					.then(function () {
+						setStatus("Successfully Sent!", "is-success");
+						contactForm.reset();
+					})
+					.catch(function (error) {
+						console.error("EmailJS error:", error);
+						const detail = error && (error.text || error.message)
+							? " (" + (error.text || error.message) + ")"
+							: "";
+						setStatus("Failed to send" + detail + ". Check your connection, EmailJS domain settings, or template IDs.", "is-error");
+					})
+					.finally(function () {
+						submitBtn.disabled = false;
+						submitBtn.value = "Send Message";
+					});
+				});
+			</script>
+
+	</body>
+</html>
