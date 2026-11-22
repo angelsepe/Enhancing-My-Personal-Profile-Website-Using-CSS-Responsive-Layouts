@@ -10,12 +10,21 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta name="description" content="Personal portfolio of Princess Angel C. Sepe, Grade 11 TVL-ICT student passionate about computers, programming, and web development." />
-		<!-- Preload LCP Banner Image for fast Mobile LCP -->
+
+		<!-- Preconnect to Google Fonts & Preload LCP Banner -->
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link rel="preload" as="image" href="banner.jpg" fetchpriority="high" />
-		<link rel="stylesheet" href="assets/css/main.css" />
+
+		<!-- Non-Render-Blocking Stylesheet Load -->
+		<link rel="preload" as="style" href="assets/css/main.css" />
+		<link rel="stylesheet" href="assets/css/main.css" media="print" onload="this.media='all'" />
+		<noscript><link rel="stylesheet" href="assets/css/main.css" /></noscript>
+
 		<script defer src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
 		<style>
-			/* Full Burgundy & Navy Blue override (replaces all #4acaa8 green rules in main.css) */
+			/* Critical Above-the-Fold Layout + Burgundy & Navy Theme (prevents FOUC & speeds up FCP/LCP) */
 			:root {
 				--burgundy-main: #6d1424;
 				--burgundy-dark: #4c0b17;
@@ -25,6 +34,50 @@
 				--navy-light: #27406b;
 				--navy-soft: rgba(22, 38, 66, 0.14);
 				--burgundy-soft: rgba(109, 20, 36, 0.12);
+			}
+
+			html, body {
+				margin: 0;
+				padding: 0;
+				background: #ffffff;
+				color: #444444;
+				font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+				line-height: 1.75;
+			}
+
+			*, *:before, *:after {
+				box-sizing: border-box;
+			}
+
+			/* Instant Banner Render for Fast Mobile LCP */
+			#one .image.main {
+				display: block;
+				width: 100%;
+				height: 14em;
+				overflow: hidden;
+				margin: 0;
+				background: var(--navy-dark);
+			}
+
+			#one .image.main img {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+				object-position: center;
+				display: block;
+			}
+
+			@media screen and (min-width: 737px) {
+				#one .image.main {
+					height: 20em;
+				}
+			}
+
+			.container {
+				margin: 0 auto;
+				max-width: calc(100% - 3em);
+				width: 45em;
+				padding: 2.5em 0;
 			}
 
 			/* Sidebar & Mobile Title Bar */
@@ -39,7 +92,7 @@
 			}
 
 			#header > header p {
-				color: rgba(255, 255, 255, 0.9) !important;
+				color: rgba(255, 255, 255, 0.92) !important;
 			}
 
 			#header .image.avatar {
@@ -76,7 +129,7 @@
 
 			/* Sidebar Footer Icons */
 			#header > footer .icons li a {
-				color: rgba(255, 255, 255, 0.85) !important;
+				color: rgba(255, 255, 255, 0.9) !important;
 				transition: color 0.25s ease, transform 0.25s ease !important;
 			}
 
@@ -326,7 +379,7 @@
 			}
 		</style>
 	</head>
-	<body class="is-preload">
+	<body>
 
 		<!-- Header -->
 			<section id="header">
@@ -462,7 +515,7 @@
 									<h3>Contact Me</h3>
 									<p>Feel free to fill out the form below. You can send me a message about school projects, feedback, or collaboration.</p>
 
-									<form id="contact-form" method="post" action="#">
+									<form id="contact-form" method="post" action="#" aria-label="Contact Me Form">
 										<div class="row gtr-uniform">
 											<div class="col-6 col-12-xsmall">
 												<label for="name" class="form-group-label">Full Name</label>
